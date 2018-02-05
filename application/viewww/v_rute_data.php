@@ -352,14 +352,18 @@
             <i class="fa fa-map"></i> <span>Rutes</span>
           </a>
           <ul class="treeview-menu">
-            <li></i><a href="<?php echo base_url('admin/rute'); ?>" class="fa fa-plus">Tambah</a></li>
-            <li class="active"><a href="<?php echo base_url('admin/rute_data'); ?>" class ="fa fa-plus"> Data </a></li>
-
+            <li class="active"></i><a href="<?php echo base_url('admin/rute'); ?>" class="fa fa-plus">Tambah</a></li>
+            <li><a href="general.html">Data</a></li>
+            
           </ul>
         </li>
-
-
-
+        
+           
+        <li><a href="https://adminlte.io/docs"><i class="fa fa-book"></i> <span>Documentation</span></a></li>
+        <li class="header">LABELS</li>
+        <li><a href="#"><i class="fa fa-circle-o text-red"></i> <span>Important</span></a></li>
+        <li><a href="#"><i class="fa fa-circle-o text-yellow"></i> <span>Warning</span></a></li>
+        <li><a href="#"><i class="fa fa-circle-o text-aqua"></i> <span>Information</span></a></li>
       </ul>
     </section>
     <!-- /.sidebar -->
@@ -370,7 +374,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-      Data
+        Advanced Form Elements
         <small>Preview</small>
       </h1>
       <ol class="breadcrumb">
@@ -390,72 +394,41 @@
 
       <div class="row">
         <div class="col-md-4">
-            <!DOCTYPE html>
-<html>
-<head>
-	<title>Lihat user</title>
-</head>
-<body>
 
-		<table id="table_id" class="table table-bordered table-striped table-hover">
-			<thead>
-				<tr>
-					<th>ID</th>
-					<th>Depart At</th>
-					<th>Rute From</th>
-					<th>Rute To</th>
-					<th>Price</th>
-					<th>transportationid</th>
-				</tr>
-			</thead>
-			<tbody>
-				<?php
-				foreach($rute_data as $tuserr)
-				{?>
-					<tr>
-						<td><?php echo $tuserr->id ?></td>
-						<td><?php echo $tuserr->depart_at ?></td>
-						<td><?php echo $tuserr->rute_from ?></td>
-                        <td><?php echo $tuserr->rute_to ?></td>
-                        <td><?php echo $tuserr->price ?></td>
-                        <td><?php echo $tuserr->transportationid ?></td>
-						<td>
-							<button class="btn btn-warning" onclick="ngedit_user(<?php echo $tuserr->id;?>)">Edit</button>
-							<button class="btn btn-danger" onclick="ngapus_rute(<?php echo $tuserr->id;?>)">Hapus</button>
-						</td>
-					</tr>
-				<?php } ?>
-			</tbody>
-		</table>
-
-</body>
-<script type="text/javascript">va
-	function ngedit_user(id)
-	{
-		var url = "<?php echo base_url() ?>";
-		window.location = url+"index.php/admin/edit_rute/"+id;
-	}
-
-	function ngapus_rute(id)
-	{
-		if (confirm("Yakin ingin mengpus rute tersebut?"))
-		{
-			if(true)
-			{
-				var url = "<?php echo base_url() ?>";
-				window.location = url+"index.php/admin/hapus_rute/"+id;
-			}
-			else
-			{
-				return false;
-			}
-		}
-	}
-
-</script>
-        </div>
+          <div class="box box-primary">
+            <div class="box-header">
+              <h3 class="box-title">Input masks</h3>
+            </div>
+            <div class="box-body">
+              <form action="<?php echo base_url('admin/proses_tambah'); ?>" method="post">
+                <div class="form-group">
+                <label>Depart At :</label>
+                <div class="input-group date">
+                  <div class="input-group-addon">
+                    <i class="fa fa-calendar"></i>
+                  </div>
+                  <input type="text" class="form-control pull-right" id="datepicker" name="depart" required="true" readonly="true">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label>Rute From :</label>
+                  <input type="text" class="form-control" name="rutefrom" required="true">
+                </div>
+                <div class="form-group">
+                  <label>Rute To :</label>
+                  <input type="text" class="form-control" name="ruteto" required="true">
+                </div>  
+                <div class="form-group">
+                  <label>Price :</label>
+                  <input type="text" class="form-control" name="price" required="true">
+                </div>
+                <div class="box-footer">
+                  <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+              </form>
+            </div>
             <!-- /.box-body -->
-        </div>
+          </div>
           <!-- /.box -->
 
 
@@ -464,9 +437,54 @@
         <!-- /.col (left) -->
         <div class="col-md-8">
           <div class="box box-primary">
-
+       
             <div class="box-header">
+              <h3 class="box-title">Simple Full Width Table</h3>s
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body no-padding">
+              <table class="table">
+                <tr>
+                  <th style="width: 10px">#</th>
+                  <th>Depart At</th>
+                  <th>Rute From</th>
+                  <th>Rute To</th>
+                  <th>Price</th>
+                  <th>Action</th>
+            
+                </tr>
+                  <?php 
+                  $no = 1;
+                  foreach($rute as $s){ 
+                  ?>
+                <tr>
+                  <td><?php echo $no++ ?></td>
+                  <td><?php echo $s->depart_at ?></td>
+                  <td><?php echo $s->rute_from ?></td>
+                  <td><?php echo $s->rute_to ?></td>
+                  <td><?php echo $s->price ?></td>
+                  <td><a style="cursor: pointer;" title="" onclick="href='<?php echo base_url(('admin/hapus_rute/'.$s->id)); ?>'">Remove</a>
+</td>
+                </tr>
+                <?php } ?>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- /.row -->
 
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+  <footer class="main-footer">
+    <div class="pull-right hidden-xs">
+      <b>Version</b> 2.4.0
+    </div>
+    <strong>Copyright &copy; 2014-2016 <a href="https://adminlte.io">Almsaeed Studio</a>.</strong> All rights
+    reserved.
+  </footer>
 
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">
@@ -1079,13 +1097,17 @@
           </a>
           <ul class="treeview-menu">
             <li class="active"></i><a href="<?php echo base_url('admin/rute'); ?>" class="fa fa-plus">Tambah</a></li>
-            <li><a href="<?php echo base_url('admin/rute_data'); ?>">Data</a></li>
-
+            <li><a href="general.html">Data</a></li>
+            
           </ul>
         </li>
-
-
-
+        
+           
+        <li><a href="https://adminlte.io/docs"><i class="fa fa-book"></i> <span>Documentation</span></a></li>
+        <li class="header">LABELS</li>
+        <li><a href="#"><i class="fa fa-circle-o text-red"></i> <span>Important</span></a></li>
+        <li><a href="#"><i class="fa fa-circle-o text-yellow"></i> <span>Warning</span></a></li>
+        <li><a href="#"><i class="fa fa-circle-o text-aqua"></i> <span>Information</span></a></li>
       </ul>
     </section>
     <!-- /.sidebar -->
@@ -1096,7 +1118,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Data
+        Advanced Form Elements
         <small>Preview</small>
       </h1>
       <ol class="breadcrumb">
@@ -1139,7 +1161,7 @@
                 <div class="form-group">
                   <label>Rute To :</label>
                   <input type="text" class="form-control" name="ruteto" required="true">
-                </div>
+                </div>  
                 <div class="form-group">
                   <label>Price :</label>
                   <input type="text" class="form-control" name="price" required="true">
@@ -1157,7 +1179,56 @@
 
         </div>
         <!-- /.col (left) -->
+        <div class="col-md-8">
+          <div class="box box-primary">
+       
+            <div class="box-header">
+              <h3 class="box-title">Simple Full Width Table</h3>s
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body no-padding">
+              <table class="table">
+                <tr>
+                  <th style="width: 10px">#</th>
+                  <th>Depart At</th>
+                  <th>Rute From</th>
+                  <th>Rute To</th>
+                  <th>Price</th>
+                  <th>Action</th>
+            
+                </tr>
+                  <?php 
+                  $no = 1;
+                  foreach($rute as $s){ 
+                  ?>
+                <tr>
+                  <td><?php echo $no++ ?></td>
+                  <td><?php echo $s->depart_at ?></td>
+                  <td><?php echo $s->rute_from ?></td>
+                  <td><?php echo $s->rute_to ?></td>
+                  <td><?php echo $s->price ?></td>
+                  <td><a style="cursor: pointer;" title="" onclick="href='<?php echo base_url(('admin/hapus_rute/'.$s->id)); ?>'">Remove</a>
+</td>
+                </tr>
+                <?php } ?>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- /.row -->
 
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+  <footer class="main-footer">
+    <div class="pull-right hidden-xs">
+      <b>Version</b> 2.4.0
+    </div>
+    <strong>Copyright &copy; 2014-2016 <a href="https://adminlte.io">Almsaeed Studio</a>.</strong> All rights
+    reserved.
+  </footer>
 
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">

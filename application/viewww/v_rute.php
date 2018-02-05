@@ -353,13 +353,17 @@
           </a>
           <ul class="treeview-menu">
             <li class="active"></i><a href="<?php echo base_url('admin/rute'); ?>" class="fa fa-plus">Tambah</a></li>
-            <li><a href="<?php echo base_url('admin/rute_data'); ?>" class ="fa fa-plus"> Data </a></li>
-
+            <li><a href="<?php echo base_url('admin/rute_data'); ?>">Data</a></li>
+            
           </ul>
         </li>
-
-
         
+           
+        <li><a href="https://adminlte.io/docs"><i class="fa fa-book"></i> <span>Documentation</span></a></li>
+        <li class="header">LABELS</li>
+        <li><a href="#"><i class="fa fa-circle-o text-red"></i> <span>Important</span></a></li>
+        <li><a href="#"><i class="fa fa-circle-o text-yellow"></i> <span>Warning</span></a></li>
+        <li><a href="#"><i class="fa fa-circle-o text-aqua"></i> <span>Information</span></a></li>
       </ul>
     </section>
     <!-- /.sidebar -->
@@ -370,7 +374,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Tambah Data
+        Advanced Form Elements
         <small>Preview</small>
       </h1>
       <ol class="breadcrumb">
@@ -410,7 +414,7 @@
                 <div class="form-group">
                   <label>Rute To :</label>
                   <input type="text" class="form-control" name="ruteto" required="true">
-                </div>
+                </div>  
                 <div class="form-group">
                   <label>Price :</label>
                   <input type="text" class="form-control" name="price" required="true">
@@ -428,9 +432,9 @@
 
         </div>
         <!-- /.col (left) -->
-
+       
   <!-- /.content-wrapper -->
-
+  
 
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">
