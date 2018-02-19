@@ -11,7 +11,7 @@
  	}
 
  	function index(){
- 		$this->load->view("v_client");
+ 		$this->load->view("index");
  	}
  } 
  ?>

@@ -35,7 +35,7 @@ class Login extends CI_Controller{
 			alert ('Maaf Username Dan Password Anda Salah !');
 			document.write ('<center><h1> Harap Masukan Username Dan Password Dengan Benar </h1></center>');
 			</script>";
-			redirect(base_url("login"));
+			#redirect(base_url("login"));
 		}
 	}
 
