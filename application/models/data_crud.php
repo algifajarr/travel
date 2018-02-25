@@ -8,6 +8,13 @@
   			return $this->db->get('rute');
  		}
 
+     function tampil_datatransportation(){
+        return $this->db->get('transportation');
+    }
+     function tampil_datauser(){
+        return $this->db->get('user');
+    }
+
  		function input_datarute($data,$table){
   			$this->db->insert($table,$data);
  		}
@@ -15,6 +22,11 @@
  		function cek_login($table,$where){
 			return $this->db->get_where($table, $where);
 		}
+
+
+    function input_datauser($data,$table){
+        $this->db->insert($table,$data);
+    }
 
 		function hapus_datarute($where,$table){
  			$this->db->where($where);
